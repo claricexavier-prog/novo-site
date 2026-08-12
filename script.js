@@ -1,3 +1,4 @@
+
 function filtrarFofocas() {
     // Pega o valor digitado no campo de busca e converte para minúsculas
     const input = document.getElementById('searchInput').value.toLowerCase();
