@@ -8,13 +8,13 @@ function filtrarFofocas() {
     
     let encontrou = false;
 
-    // Percorre cada card para verificar se o termo buscado bate com título, texto ou tag (ex: Curitiba, Londrina)
+    // Percorre cada card para verificar se o termo buscado bate com título, texto ou tag
     for (let i = 0; i < cards.length; i++) {
         const titulo = cards[i].querySelector('.card-title').innerText.toLowerCase();
         const texto = cards[i].querySelector('.card-text').innerText.toLowerCase();
         const tag = cards[i].querySelector('.card-tag').innerText.toLowerCase();
 
-        // Se encontrar no título, texto ou tag da cidade, exibe o card
+        // Se encontrar no título, texto ou tag, exibe o card
         if (titulo.includes(input) || texto.includes(input) || tag.includes(input)) {
             cards[i].style.display = "flex";
             encontrou = true;
