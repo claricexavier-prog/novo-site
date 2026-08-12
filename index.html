@@ -53,4 +53,208 @@
             max-width: 800px;
             margin: 30px auto 10px auto;
             padding: 0 20px;
-            width: 1
+            width: 100%;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            border: 3px solid #ff69b4;
+            border-radius: 30px;
+            outline: none;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: #1a1a1a;
+            box-shadow: 0 4px 12px rgba(255, 105, 180, 0.4);
+        }
+
+        /* CONTEÚDO PRINCIPAL (ROSA BEBÊ) */
+        main {
+            flex: 1;
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        /* GRID DE CARDs DE FOFOCA */
+        .fofocas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .fofoca-card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid #ffb6c1;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .fofoca-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
+        }
+
+        .card-tag {
+            background-color: #1a1a1a;
+            color: #ff69b4;
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 5px 12px;
+            align-self: flex-start;
+            margin: 15px 15px 0 15px;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .card-content {
+            padding: 15px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.4;
+            flex: 1;
+        }
+
+        .no-results {
+            text-align: center;
+            grid-column: 1 / -1;
+            padding: 40px;
+            font-size: 1.2rem;
+            color: #666;
+            display: none;
+        }
+
+        /* RODAPÉ */
+        footer {
+            background-color: #1a1a1a;
+            color: #ff69b4;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 class="header-title">🔥 Portal Gossip Pink 🔥</h1>
+    </header>
+
+    <div class="search-container">
+        <input 
+            type="text" 
+            id="searchInput" 
+            class="search-input" 
+            placeholder="Pesquise por criadores, tretas ou assuntos polêmicos..."
+            onkeyup="filtrarFofocas()"
+        >
+    </div>
+
+    <main>
+        <h2 class="section-title">Últimas Atualizações</h2>
+
+        <div class="fofocas-grid" id="fofocasGrid">
+            
+            <article class="fofoca-card">
+                <span class="card-tag">TikTok</span>
+                <div class="card-content">
+                    <h3 class="card-title">Treta na Hype House?</h3>
+                    <p class="card-text">Indiretas nos stories e unfollows misteriosos movimentaram a madrugada dos influenciadores mais seguidos da plataforma.</p>
+                </div>
+            </article>
+
+            <article class="fofoca-card">
+                <span class="card-tag">YouTube</span>
+                <div class="card-content">
+                    <h3 class="card-title">Exposição em Vídeo de 40 Minutos</h3>
+                    <p class="card-text">Canal grande lança exposed com prints detalhados sobre quebra de contrato e exposed de bastidores.</p>
+                </div>
+            </article>
+
+            <article class="fofoca-card">
+                <span class="card-tag">Polêmica</span>
+                <div class="card-content">
+                    <h3 class="card-title">A Grande Dança das Cadeiras</h3>
+                    <p class="card-text">Fãs descobrem detalhes em fotos e apontam novo casal no ar. Será que vem aí o assumimento?</p>
+                </div>
+            </article>
+
+            <article class="fofoca-card">
+                <span class="card-tag">TikTok</span>
+                <div class="card-content">
+                    <h3 class="card-title">Áudio Vazado no Privado</h3>
+                    <p class="card-text">Trecho de conversa vazada sobre bastidores de evento famoso gera prints e pronunciamentos oficiais.</p>
+                </div>
+            </article>
+
+        </div>
+
+        <div id="noResults" class="no-results">
+            Nenhuma fofoca encontrada com esse termo! 🐸☕
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Portal Gossip Pink - Os babados mais quentes da internet!</p>
+    </footer>
+
+    <script>
+        function filtrarFofocas() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.getElementsByClassName('fofoca-card');
+            const noResults = document.getElementById('noResults');
+            let encontrou = false;
+
+            for (let i = 0; i < cards.length; i++) {
+                const titulo = cards[i].querySelector('.card-title').innerText.toLowerCase();
+                const texto = cards[i].querySelector('.card-text').innerText.toLowerCase();
+                const tag = cards[i].querySelector('.card-tag').innerText.toLowerCase();
+
+                if (titulo.includes(input) || texto.includes(input) || tag.includes(input)) {
+                    cards[i].style.display = "flex";
+                    encontrou = true;
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+
+            if (encontrou) {
+                noResults.style.display = "none";
+            } else {
+                noResults.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
