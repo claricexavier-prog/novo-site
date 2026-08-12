@@ -3,15 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gossip Paraná | As Polêmicas do Estado</title>
-    <!-- Vinculação com o arquivo CSS separado -->
-    <link rel="stylesheet" href="style.css">
+    <title>Babados do Paraná | Bastidores e Polêmicas</title>
+    <style>
+        /* RESET E ESTILOS GERAIS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #fde2e4; /* Rosa bebê */
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* CABEÇALHO COM LISTRAS ROSA E PRETO */
+        header {
+            background: repeating-linear-gradient(
+                45deg,
+                #ff69b4,
+                #ff69b4 20px,
+                #1a1a1a 20px,
+                #1a1a1a 40px
+            );
+            padding: 50px 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-title {
+            background-color: rgba(0, 0, 0, 0.85);
+            color: #ff69b4;
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 15px;
+            border: 2px solid #ff69b4;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 2.2rem;
+            text-shadow: 0 0 8px rgba(255, 105, 180, 0.6);
+        }
+
+        /* ÁREA DE BUSCA */
+        .search-container {
+            max-width: 800px;
+            margin: 30px auto 10px auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            border: 3px solid #ff69b4;
+            border-radius: 30px;
+            outline: none;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: #1a1a1a;
+            box-shadow: 0 4px 12px rgba(255, 105, 180, 0.4);
+        }
+
+        /* CONTEÚDO PRINCIPAL (ROSA BEBÊ) */
+        main {
+            flex: 1;
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        /* GRID DE CARDS DE FOFOCA */
+        .fofocas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .fofoca-card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid #ffb6c1;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .fofoca-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
+        }
+
+        .card-tag {
+            background-color: #1a1a1a;
+            color: #ff69b4;
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 5px 12px;
+            align-self: flex-start;
+            margin: 15px 15px 0 15px;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .card-content {
+            padding: 15px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.4;
+            flex: 1;
+        }
+
+        .no-results {
+            text-align: center;
+            grid-column: 1 / -1;
+            padding: 40px;
+            font-size: 1.2rem;
+            color: #666;
+            display: none;
+        }
+
+        /* RODAPÉ */
+        footer {
+            background-color: #1a1a1a;
+            color: #ff69b4;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Cabeçalho (Fundo listrado Rosa e Preto) -->
+    <!-- Cabeçalho Listrado -->
     <header>
-        <h1 class="header-title">🔥 Gossip Paraná 🔥</h1>
+        <h1 class="header-title">👑 Babados do Paraná 👑</h1>
     </header>
 
     <!-- Barra de Pesquisa -->
@@ -20,14 +178,14 @@
             type="text" 
             id="searchInput" 
             class="search-input" 
-            placeholder="Pesquise por influenciadores do PR, Curitiba, Maringá..."
+            placeholder="Pesquise por Curitiba, Londrina, TikTokers ou influenciadores..."
             onkeyup="filtrarFofocas()"
         >
     </div>
 
-    <!-- Conteúdo Principal (Fundo Rosa Bebê) -->
+    <!-- Conteúdo Principal -->
     <main>
-        <h2 class="section-title">Babados do Paraná</h2>
+        <h2 class="section-title">Últimas do Estado</h2>
 
         <div class="fofocas-grid" id="fofocasGrid">
             
@@ -35,8 +193,8 @@
             <article class="fofoca-card">
                 <span class="card-tag">Curitiba</span>
                 <div class="card-content">
-                    <h3 class="card-title">Encontro de TikTokers no Batel</h3>
-                    <p class="card-text">Criadores de conteúdo de Curitiba se reuniram no fim de semana e o clima ficou tenso após indiretas gravadas nos stories.</p>
+                    <h3 class="card-title">Encontro de Criadores no Batel</h3>
+                    <p class="card-text">TikTokers de Curitiba se reuniram no fim de semana e movimentaram as redes com gravações de trends e indiretas misteriosas nos stories.</p>
                 </div>
             </article>
 
@@ -44,8 +202,8 @@
             <article class="fofoca-card">
                 <span class="card-tag">Londrina</span>
                 <div class="card-content">
-                    <h3 class="card-title">Exposed no Podcast Local</h3>
-                    <p class="card-text">Influenciadora de Londrina revelou detalhes sobre término polêmico durante entrevista e gerou resposta imediata no Reels.</p>
+                    <h3 class="card-title">Revelação no Podcast Local</h3>
+                    <p class="card-text">Influenciadora de Londrina contou detalhes sobre bastidores de contratos e parcerias em entrevista rápida que viralizou no Reels.</p>
                 </div>
             </article>
 
@@ -53,8 +211,8 @@
             <article class="fofoca-card">
                 <span class="card-tag">Maringá</span>
                 <div class="card-content">
-                    <h3 class="card-title">Vazamento de Áudio da Mansão</h3>
-                    <p class="card-text">Áudio de influenciadores de Maringá sobre desentendimentos em gravação de publi viralizou no TikTok.</p>
+                    <h3 class="card-title">Bastidores de Gravação em Mansão</h3>
+                    <p class="card-text">Áudio de bastidores sobre desentendimentos entre criadores de Maringá durante evento de publis vazou nas redes.</p>
                 </div>
             </article>
 
@@ -62,25 +220,50 @@
             <article class="fofoca-card">
                 <span class="card-tag">Foz do Iguaçu</span>
                 <div class="card-content">
-                    <h3 class="card-title">Novo Casal em Viagem?</h3>
-                    <p class="card-text">Seguidores notaram o mesmo cenário de fundo nas fotos de dois YouTubers paranaenses e desconfiam de romance.</p>
+                    <h3 class="card-title">Novo Casal de YouTubers?</h3>
+                    <p class="card-text">Seguidores notaram cenários parecidos em fotos de viagem e apontam romance no ar entre dois influenciadores do PR.</p>
                 </div>
             </article>
 
         </div>
 
-        <!-- Mensagem de erro quando nada for encontrado na busca -->
         <div id="noResults" class="no-results">
-            Nenhuma fofoca encontrada com esse termo! 🐸☕
+            Nenhum babado encontrado com esse termo! 🐸☕
         </div>
     </main>
 
     <!-- Rodapé -->
     <footer>
-        <p>&copy; Gossip Paraná - O portal mais quente das polêmicas do PR!</p>
+        <p>&copy; Babados do Paraná - O portal de notícias e bastidores dos influenciadores paranaenses!</p>
     </footer>
 
-    <!-- Vinculação com o arquivo JS separado -->
-    <script src="script.js"></script>
+    <!-- SCRIPT DE BUSCA -->
+    <script>
+        function filtrarFofocas() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.getElementsByClassName('fofoca-card');
+            const noResults = document.getElementById('noResults');
+            let encontrou = false;
+
+            for (let i = 0; i < cards.length; i++) {
+                const titulo = cards[i].querySelector('.card-title').innerText.toLowerCase();
+                const texto = cards[i].querySelector('.card-text').innerText.toLowerCase();
+                const tag = cards[i].querySelector('.card-tag').innerText.toLowerCase();
+
+                if (titulo.includes(input) || texto.includes(input) || tag.includes(input)) {
+                    cards[i].style.display = "flex";
+                    encontrou = true;
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+
+            if (encontrou) {
+                noResults.style.display = "none";
+            } else {
+                noResults.style.display = "block";
+            }
+        }
+    </script>
 </body>
 </html>
